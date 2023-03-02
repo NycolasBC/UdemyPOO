@@ -11,7 +11,7 @@ namespace Course.Modulo4
     {
         public void Problema01()
         {
-            Console.WriteLine("\nAula 48 - Problema");
+            Console.WriteLine("\nAula 42 - Problema");
 
             Produto produtos = new Produto();
 
@@ -19,6 +19,20 @@ namespace Course.Modulo4
             int quantidade = Convert.ToInt32(Console.ReadLine());
 
             List<Produto> produtosLista = produtos.AdicionarProdutos(quantidade);
+
+            Console.WriteLine("\nTodos os Produtos:\n");
+
+
+            foreach (Produto item in produtosLista)
+            {
+                Console.WriteLine($"Nome do Produto: {item.Nome}");
+                Console.WriteLine($"Preço do Produto: {item.Preco}");
+                Console.WriteLine($"Quantidade no estoque: {item.Quantidade}\n");
+            }
+
+            double valorEstoque = produtos.ValorTotalEmEstoque();
+
+            Console.WriteLine($"\nValor total em estoque: R${valorEstoque.ToString("F2", CultureInfo.InvariantCulture)}");
 
         }
     }
@@ -40,14 +54,14 @@ namespace Course.Modulo4
         {
             List<Produto> listaProdutos = new List<Produto>();
 
-            for (int i = 0; i <= qtd; i++)
+            for (int i = 0; i < qtd; i++)
             {
-                Console.WriteLine("Entre com os dados do produto:");
-
-                Console.Write("Preço: ");
-                Nome = Console.ReadLine();
+                Console.WriteLine("\nEntre com os dados do produto:");
 
                 Console.Write("Nome: ");
+                Nome = Console.ReadLine();
+
+                Console.Write("Preço: ");
                 Preco = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
 
                 Console.Write("Quantidade no estoque: ");

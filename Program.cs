@@ -85,7 +85,8 @@ namespace Course
                     {
                         Console.WriteLine("\nQual aula deseja escolher?");
                         Console.WriteLine(
-                            "\n38 - Aula 38 e 39\n"
+                            "\n38 - Aula 38 e 39" +
+                            "\n42- Aula 42\n"
                         );
 
                         int typedNumber = Convert.ToInt32(Console.ReadLine());
