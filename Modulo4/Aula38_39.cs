@@ -12,7 +12,7 @@ namespace Course.Modulo4
     {
         public void ProblemWithoutPOO()
         {
-            Console.WriteLine("\nProblema sem POO\n");
+            Console.WriteLine("\nProblema sem POO:\n");
 
             double xA, xB, xC, yA, yB, yC;
 
@@ -47,7 +47,7 @@ namespace Course.Modulo4
 
         public void ProblemWithPOO()
         {
-            Console.WriteLine("\nProblema com POO\n");
+            Console.WriteLine("\nProblema com POO:\n");
 
             Triangulo x, y;
             x = new Triangulo();
@@ -63,11 +63,8 @@ namespace Course.Modulo4
             y.B = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
             y.C = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            double p = (x.A + x.B + x.C) / 2.0;
-            double areaX = Math.Sqrt(p * (p - x.A) * (p - x.B) * (p - x.C));
-
-            p = (y.A + y.B + y.C) / 2.0;
-            double areaY = Math.Sqrt(p * (p - y.A) * (p - y.B) * (p - y.C));
+            double areaX = x.AreaTriangulo();
+            double areaY = y.AreaTriangulo();
 
             Console.WriteLine($"\nÁrea de x: {areaX.ToString("F4", CultureInfo.InvariantCulture)}");
             Console.WriteLine($"\nÁrea de y: {areaY.ToString("F4", CultureInfo.InvariantCulture)}");
@@ -81,6 +78,78 @@ namespace Course.Modulo4
                 Console.WriteLine("\nMaior: area Y");
             }
         }
+
+        public void ExercicoClasse01()
+        {
+            Console.WriteLine("\nExercício de Classes 01:\n");
+
+            Pessoa pessoa1 = new Pessoa();
+            Pessoa pessoa2 = new Pessoa();
+
+            List<Pessoa> listaPessoas = new List<Pessoa>();
+
+            Console.WriteLine("\nQual o nome e a idade da pimeira pessoa?");
+            string[] vetorPessoa1 = Console.ReadLine().Split(' ');
+            pessoa1.nome = vetorPessoa1[0];
+            pessoa1.idade = Convert.ToInt32(vetorPessoa1[1]);
+            
+            Console.WriteLine("\nQual o nome e a idade da segunda pessoa?");
+            string[] vetorPessoa2 = Console.ReadLine().Split(' ');
+            pessoa2.nome = vetorPessoa2[0];
+            pessoa2.idade = Convert.ToInt32(vetorPessoa2[1]);
+
+            listaPessoas.Add(pessoa1);
+            listaPessoas.Add(pessoa2);
+
+            Console.WriteLine("\nDados da primeira pessoa:\n");
+            Console.WriteLine($"Nome: {listaPessoas[0].nome}\nIdade: {listaPessoas[0].idade}");
+
+            Console.WriteLine("\nDados da segunda pessoa:\n");
+            Console.WriteLine($"Nome: {listaPessoas[1].nome}\nIdade: {listaPessoas[1].idade}");
+
+
+            if (listaPessoas[0].idade > listaPessoas[1].idade)
+            {
+                Console.WriteLine($"\nPessoa mais velha: {listaPessoas[0].nome}");
+            }
+            else
+            {
+                Console.WriteLine($"\nPessoa mais velha: {listaPessoas[1].nome}");
+            }
+        }
+
+        public void ExercicoClasse02()
+        {
+            Console.WriteLine("\nExercício de Classes 02:\n");
+
+            Funcionario funcionario1 = new Funcionario();
+            Funcionario funcionario2 = new Funcionario();
+
+            List<Funcionario> listaFuncionarios = new List<Funcionario>();
+
+            Console.WriteLine("\nQual o nome e a idade da pimeira pessoa?");
+            string[] vetorFuncionario1 = Console.ReadLine().Split("  ");
+            funcionario1.nome = vetorFuncionario1[0];
+            funcionario1.salario = Convert.ToDouble(vetorFuncionario1[1], CultureInfo.InvariantCulture);
+
+            Console.WriteLine("\nQual o nome e a idade da segunda pessoa?");
+            string[] vetorFuncionario2 = Console.ReadLine().Split("  ");
+            funcionario2.nome = vetorFuncionario2[0];
+            funcionario2.salario = Convert.ToDouble(vetorFuncionario2[1], CultureInfo.InvariantCulture) ;
+
+            listaFuncionarios.Add(funcionario1);
+            listaFuncionarios.Add(funcionario2);
+
+            Console.WriteLine("\nDados do primeiro funcionário:\n");
+            Console.WriteLine($"Nome: {listaFuncionarios[0].nome}\nSalário: {listaFuncionarios[0].salario.ToString("F2", CultureInfo.InvariantCulture)}");
+
+            Console.WriteLine("\nDados do segundo funcionário:\n");
+            Console.WriteLine($"Nome: {listaFuncionarios[1].nome}\nSalário: {listaFuncionarios[1].salario.ToString("F2", CultureInfo.InvariantCulture)}");
+
+            double mediaSalario = (listaFuncionarios[0].salario + listaFuncionarios[1].salario) / 2.0;
+
+            Console.WriteLine($"\nSalário médio = {mediaSalario.ToString("F2", CultureInfo.InvariantCulture)}\n");
+        }
     }
 
 
@@ -90,5 +159,26 @@ namespace Course.Modulo4
         public double A;
         public double B;
         public double C;
+
+        public double AreaTriangulo()
+        {
+            double p = (A + B + C) / 2.0;
+
+            double calculoArea = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+
+            return calculoArea;  // ou return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+        }
+    }
+
+    internal class Pessoa
+    {
+        public string nome;
+        public int idade;
+    }
+
+    internal class Funcionario
+    {
+        public string nome;
+        public double salario;
     }
 }

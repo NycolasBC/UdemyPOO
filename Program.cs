@@ -98,6 +98,17 @@ namespace Course
 
                                     _aula38_39.ProblemWithoutPOO();
                                     _aula38_39.ProblemWithPOO();
+                                    _aula38_39.ExercicoClasse01();
+                                    _aula38_39.ExercicoClasse02();
+
+                                    break;
+                                }
+
+                            case 42:
+                                {
+                                    Aula42 _aula42 = new Aula42();
+
+                                    _aula42.Problema01();
 
                                     break;
                                 }
