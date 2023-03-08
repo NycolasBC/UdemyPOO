@@ -11,29 +11,86 @@ namespace Course.Modulo4
     {
         public void Problema01()
         {
-            Console.WriteLine("\nAula 42 - Problema");
+            //Futuramente terminar de transformar em uma lista
+            Console.WriteLine("\nAula 42 - Problema\n");
 
-            Produto produtos = new Produto();
+            List<Produto> listaProdutos = new List<Produto>();
+            Produto produto = new Produto();
 
-            Console.WriteLine("\nQual a quantidade de produtos que serão informados:");
-            int quantidade = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nEntre com os dados do produto:");
 
-            List<Produto> produtosLista = produtos.AdicionarProdutos(quantidade);
+            Console.Write("Nome: ");
+            produto.Nome = Console.ReadLine();
+
+            Console.Write("Preço: ");
+            produto.Preco = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Quantidade no estoque: ");
+            produto.Quantidade = Convert.ToInt32(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            listaProdutos.Add(produto);
+
 
             Console.WriteLine("\nTodos os Produtos:\n");
 
-
-            foreach (Produto item in produtosLista)
+            foreach (Produto item in listaProdutos)
             {
-                Console.WriteLine($"Nome do Produto: {item.Nome}");
-                Console.WriteLine($"Preço do Produto: {item.Preco}");
-                Console.WriteLine($"Quantidade no estoque: {item.Quantidade}\n");
+                Console.WriteLine($"\nDados do produto: {item}");
             }
 
-            double valorEstoque = produtos.ValorTotalEmEstoque();
+            bool loop = true;
 
-            Console.WriteLine($"\nValor total em estoque: R${valorEstoque.ToString("F2", CultureInfo.InvariantCulture)}");
+            while (loop)
+            {
 
+                Console.WriteLine("\nMenu:");
+                Console.WriteLine("\n1 - Adicionar Produtos" + "\n2 - Remover" + "\n3 - Sair");
+                int opcao = Convert.ToInt32(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        {
+                            Console.WriteLine("\nQual a quantidade a ser adicionada?");
+                            int quantidade = Convert.ToInt32(Console.ReadLine());
+
+                            produto.AdicionarProdutos(quantidade);
+
+                            foreach (Produto item in listaProdutos)
+                            {
+                                Console.WriteLine($"\nDados atualizados: {item}");
+                            }
+
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("\nQual a quantidade a ser removida?");
+                            int quantidade = Convert.ToInt32(Console.ReadLine());
+
+                            produto.RemoverProdutos(quantidade);
+
+                            foreach (Produto item in listaProdutos)
+                            {
+                                Console.WriteLine($"\nDados atualizados: {item}");
+                            }
+
+                            break;
+                        }
+                    case 3:
+                        {
+                            loop = false;
+
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Digite um valor válido.");
+
+                            break;
+                        }
+                }
+            }
         }
     }
 
@@ -50,32 +107,25 @@ namespace Course.Modulo4
             return Preco * Quantidade;
         }
 
-        public List<Produto> AdicionarProdutos(int qtd)
+        public void AdicionarProdutos(int quantidade)
         {
-            List<Produto> listaProdutos = new List<Produto>();
-
-            for (int i = 0; i < qtd; i++)
-            {
-                Console.WriteLine("\nEntre com os dados do produto:");
-
-                Console.Write("Nome: ");
-                Nome = Console.ReadLine();
-
-                Console.Write("Preço: ");
-                Preco = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                Console.Write("Quantidade no estoque: ");
-                Quantidade = Convert.ToInt32(Console.ReadLine());
-
-                listaProdutos.Add(new Produto { Nome = Nome, Preco = Preco, Quantidade = Quantidade });
-            }
-
-            return listaProdutos;
+            Quantidade += quantidade;
         }
 
-        public void RemoverProdutos(int qtd)
+        public void RemoverProdutos(int quantidade)
         {
+            Quantidade -= quantidade;
+        }
 
+        public override string ToString()
+        {
+            return Nome
+                + ", $ "
+                + Preco.ToString("F2", CultureInfo.InvariantCulture)
+                + ", "
+                + Quantidade
+                + " unidades, Total: $ "
+                + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

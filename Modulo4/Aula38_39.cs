@@ -122,10 +122,10 @@ namespace Course.Modulo4
         {
             Console.WriteLine("\nExercício de Classes 02:\n");
 
-            Funcionario funcionario1 = new Funcionario();
-            Funcionario funcionario2 = new Funcionario();
+            Funcionarios funcionario1 = new Funcionarios();
+            Funcionarios funcionario2 = new Funcionarios();
 
-            List<Funcionario> listaFuncionarios = new List<Funcionario>();
+            List<Funcionarios> listaFuncionarios = new List<Funcionarios>();
 
             Console.WriteLine("\nQual o nome e a idade da pimeira pessoa?");
             string[] vetorFuncionario1 = Console.ReadLine().Split("  ");
@@ -176,7 +176,7 @@ namespace Course.Modulo4
         public int idade;
     }
 
-    internal class Funcionario
+    internal class Funcionarios
     {
         public string nome;
         public double salario;
