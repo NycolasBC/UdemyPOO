@@ -89,7 +89,8 @@ namespace Course
                             Console.WriteLine(
                                 "\n1 - Aula 38 e 39" +
                                 "\n2 - Aula 42" +
-                                "\n3 - Aula 45\n"
+                                "\n3 - Aula 45" +
+                                "\n4 = Aula 46\n"
                             );
 
                             int typedNumber = Convert.ToInt32(Console.ReadLine());
@@ -116,13 +117,24 @@ namespace Course
 
                                         break;
                                     }
+
                                 case 3:
                                     {
                                         Aula45 _aula45 = new Aula45();
 
-                                        //_aula45.ExercicioClasse01();
-                                        //_aula45.ExercicioClasse02();
+                                        _aula45.ExercicioClasse01();
+                                        _aula45.ExercicioClasse02();
                                         _aula45.ExercicioClasse03();
+
+                                        break;
+                                    }
+
+                                case 4:
+                                    {
+                                        Aula46 _aula46 = new Aula46();
+
+                                        _aula46.CalculadoraComInstância();
+                                        _aula46.CalculadoraStatic();
 
                                         break;
                                     }
@@ -144,7 +156,7 @@ namespace Course
                     Console.WriteLine("Fim do programa!");
 
                 }
-                else if (typedChar != 'n' || typedChar != 's')
+                else if (typedChar != 'n' && typedChar != 's')
                 {
                     Console.WriteLine("Digite um valor válido");
 
