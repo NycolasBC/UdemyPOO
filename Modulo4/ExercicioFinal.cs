@@ -16,7 +16,7 @@ namespace Course.Modulo4
 
 
             Console.Write($"Qual é a cotação do dólar? ");
-            double cotacao = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture));
+            double cotacao = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             Console.Write($"Quantos dólares você vai comprar? ");
             double valorCompra = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -36,7 +36,7 @@ namespace Course.Modulo4
 
         public static double ConversorDeMoeda(double cotacao, double valorCompra)
         {
-            ouble total = valorCompra * cotacao;
+            double total = valorCompra * cotacao;
             return total + total * Iof / 100.0;
         }
     }

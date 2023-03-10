@@ -90,7 +90,8 @@ namespace Course
                                 "\n1 - Aula 38 e 39" +
                                 "\n2 - Aula 42" +
                                 "\n3 - Aula 45" +
-                                "\n4 = Aula 46\n"
+                                "\n4 = Aula 46" +
+                                "\n5 - Exercício Final"
                             );
 
                             int typedNumber = Convert.ToInt32(Console.ReadLine());
@@ -135,6 +136,15 @@ namespace Course
 
                                         _aula46.CalculadoraComInstância();
                                         _aula46.CalculadoraStatic();
+
+                                        break;
+                                    }
+
+                                case 5:
+                                    {
+                                        ExercicioFinal exercicioClasse = new ExercicioFinal();
+
+                                        exercicioClasse.Exercicio01();
 
                                         break;
                                     }
